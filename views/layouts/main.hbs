@@ -11,9 +11,13 @@
     <title>StoryBooks - fedecha</title>
 </head>
 <body>
+    {{> _header}}
     <div class="container">
-        {{{body}}}
+    {{{body}}}
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/matrialize.min.js"></script>
+    <script>
+        M.Sidenav.init(document.querySelector('.sidenav'))
+    </script>
 </body>
 </html>
