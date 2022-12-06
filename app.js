@@ -20,10 +20,27 @@ connectDB()
 
 const app = express()
 
+//body parser
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+
 //logging
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
+
+//handlebars helpers
+const { formatDate } = require('./helpers/hbs')
+
+//handlebars helpers
+app.engine('.hbs', exphbs.engine({ 
+    helpers: {
+        formatDate,
+    },
+    defaultLayout: 'main',
+    extname: '.hbs'
+    })
+)
 
 //Handlebars /added the word .engine after exphbs
 app.engine('.hbs', exphbs.engine({
@@ -56,6 +73,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
+app.use('/stories', require('./routes/stories'))
 
 
 const PORT = process.env.PORT || 2121
