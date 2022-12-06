@@ -29,26 +29,21 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
-//handlebars helpers
+//HELPERS
 const { formatDate } = require('./helpers/hbs')
 
-//handlebars helpers
-app.engine('.hbs', exphbs.engine({ 
-    helpers: {
-        formatDate,
-    },
-    defaultLayout: 'main',
-    extname: '.hbs'
-    })
-)
-
-//Handlebars /added the word .engine after exphbs
-app.engine('.hbs', exphbs.engine({
-    defaultLayout: 'main', 
-    extname: '.hbs' 
+//Handlebars
+app.engine(
+    '.hbs', 
+    //!Change: add '.engine' after exphbs
+    exphbs.engine({
+        helpers: {
+            formatDate,
+        },
+        defaultLayout: 'main',
+        extname: '.hbs'
     })
 );
-
 app.set('view engine', '.hbs');
 
 // Sessions 
