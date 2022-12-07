@@ -21,6 +21,8 @@ const StorySchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
+        //change this field should be requiresd because the app will break if the user is not presnet.
+        required: true,
     },
 
     createdAt: {
