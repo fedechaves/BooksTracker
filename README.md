@@ -1,6 +1,6 @@
 # BooksTracker - Track what you read and what you have in qeue.
 
-![refImage](public/booktracker.jpg)
+![refImage](public/booktracker.JPG)
 
 > Be sure to add that lovely star 😀 and fork it for your own copy
 
